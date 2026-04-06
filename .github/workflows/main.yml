@@ -1,4 +1,4 @@
-name: "Common airport Checkin"
+name: "JBAV Checkin"
 
 on:
   schedule:
