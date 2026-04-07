@@ -33,7 +33,7 @@ def sign(user,pwd):
         response = json.loads(login_res_str)
         print('1-登录完成')
         #
-        check_res_str = session.post(url=check_url,headers=header,{"user_id": 185920}).text
+        check_res_str = session.post(url=check_url,headers=header,data={"user_id": 185920}).text
         print(check_res_str)
     except Exception as e:
         content = '签到失败'
