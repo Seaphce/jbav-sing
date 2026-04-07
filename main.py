@@ -32,11 +32,11 @@ def sign(user,pwd):
         print(f'===账号进行登录...===')
         # 进行登录
         session = requests.session()
-        #login_res_str = session.post(url=login_url,headers=header,data=data)
+        login_res = session.post(url=login_url,headers=header,data=data)
         print('登录结果：')
-		print(login_res_str.status_code)
-		print(login_res_str.reason)
-        print(login_res_str.text)
+		print(login_res.status_code)
+		print(login_res.reason)
+        print(login_res.text)
         
         print(f'===账号进行签到...===')
         #
