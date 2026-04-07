@@ -37,6 +37,7 @@ def sign(user,pwd):
         print(check_res_str)
     except Exception as e:
         content = '签到失败'
+		print(content)
         print(e)
     print('===账号签到结束===\n')
 
