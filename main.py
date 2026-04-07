@@ -4,7 +4,8 @@ import requests, json, re, os
 # 网站的域名
 url = os.environ.get('URL')
 # 配置用户名（一般是邮箱(换行)密码）
-config = os.environ.get('CONFIG')
+user_name = os.environ.get('UN')
+password = os.environ.get('PW')
 
 login_url = '{}/login'.format(url)
 check_url = '{}/mod/sing_in.php'.format(url)
@@ -32,7 +33,7 @@ def sign(user,pwd):
         response = json.loads(login_res_str)
         print('1-登录完成')
         #
-        check_res_str = session.post(url=check_url,headers=header).text
+        check_res_str = session.post(url=check_url,headers=header,{"user_id": 185920}).text
         print(check_res_str)
     except Exception as e:
         content = '签到失败'
@@ -40,7 +41,7 @@ def sign(user,pwd):
     print('===账号签到结束===\n')
 
 if __name__ == '__main__':
-	user = 'iamfrom147'
-	pwd = 'abd3618f'
+	user = user_name
+	pwd = password
 	sign(user,pwd)
         
