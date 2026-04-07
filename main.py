@@ -14,6 +14,7 @@ def sign(user,pwd):
     global url
     header = {
         'origin': url,
+		'Content-Type': 'application/json',
         'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
     }
     data = {
@@ -24,20 +25,24 @@ def sign(user,pwd):
         'format': 'json',
         'mode': 'async',
     }
+    data_2 = {
+        'user_id': 185920
+    }
     try:
         print(f'===账号进行登录...===')
         # 进行登录
         session = requests.session()
-        login_res_str = session.post(url=login_url,headers=header,data=data).text
-        print(login_res_str)
-        response = json.loads(login_res_str)
-        print('1-登录完成')
+        #login_res_str = session.post(url=login_url,headers=header,data=data).text
+        print('登录结果：')
+        #print(login_res_str)
+        
+        print(f'===账号进行签到...===')
         #
-        check_res_str = session.post(url=check_url,headers=header,data={"user_id": 185920}).text
-        print(check_res_str)
+        check_res_str = session.post(url=check_url,headers=header,json=data_2).text
+        print('签到结果：')
+        print(check_res_str.encode().decode('unicode-escape'))
     except Exception as e:
-        content = '签到失败'
-		print(content)
+        print('签到失败')
         print(e)
     print('===账号签到结束===\n')
 
