@@ -34,8 +34,8 @@ def sign(user,pwd):
         session = requests.session()
         login_res = session.post(url=login_url,headers=header,data=data)
         print('登录结果：')
-		print(login_res.status_code)
-		print(login_res.reason)
+        print(login_res.status_code)
+        print(login_res.reason)
         print(login_res.text)
         
         print(f'===账号进行签到...===')
