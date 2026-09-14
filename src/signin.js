@@ -1,0 +1,126 @@
+import axios from "axios";
+
+const BASE_URL = process.env.BASE_URL;
+const USERNAME = process.env.USERNAME;
+const PASSWORD = process.env.PASSWORD;
+
+if (!BASE_URL || !USERNAME || !PASSWORD) {
+  throw new Error(
+    "Missing required environment variables: BASE_URL, USERNAME, PASSWORD"
+  );
+}
+
+const client = axios.create({
+  baseURL: BASE_URL,
+  timeout: 15000,
+  maxRedirects: 5,
+  validateStatus: () => true,
+  headers: {
+    "User-Agent": "Mozilla/5.0 (GitHub Actions; Node.js)",
+    "Accept": "application/json, text/plain, */*"
+  }
+});
+
+// 简单 Cookie Jar
+let cookies = {};
+
+function saveCookies(response) {
+  const setCookie = response.headers["set-cookie"];
+
+  if (!setCookie) {
+    return;
+  }
+
+  for (const cookie of setCookie) {
+    const pair = cookie.split(";")[0];
+    const index = pair.indexOf("=");
+
+    if (index === -1) continue;
+
+    const name = pair.substring(0, index);
+    const value = pair.substring(index + 1);
+
+    cookies[name] = value;
+  }
+}
+
+function getCookieHeader() {
+  return Object.entries(cookies)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("; ");
+}
+
+async function login() {
+  console.log("正在登录...");
+
+  const response = await client.post(
+    "/login",
+    {
+      username: USERNAME,
+      password: PASSWORD
+    },
+    {
+      headers: {
+        Cookie: getCookieHeader()
+      }
+    }
+  );
+
+  saveCookies(response);
+
+  console.log(`登录 HTTP 状态码: ${response.status}`);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error(`登录失败: ${JSON.stringify(response.data)}`);
+  }
+
+  console.log("登录成功");
+}
+
+async function checkIn() {
+  console.log("正在签到...");
+
+  const response = await client.post(
+    "/mod/sing_in.php",
+    {},
+    {
+      headers: {
+        Cookie: getCookieHeader()
+      }
+    }
+  );
+
+  saveCookies(response);
+
+  console.log(`签到 HTTP 状态码: ${response.status}`);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error(`签到失败: ${JSON.stringify(response.data)}`);
+  }
+
+  console.log("签到请求完成");
+  console.log("服务器返回:");
+  console.log(response.data);
+}
+
+async function main() {
+  try {
+    await login();
+    await checkIn();
+
+    console.log("任务执行完成");
+  } catch (error) {
+    console.error("任务执行失败:");
+
+    if (error.response) {
+      console.error("HTTP:", error.response.status);
+      console.error("Response:", error.response.data);
+    } else {
+      console.error(error.message);
+    }
+
+    process.exit(1);
+  }
+}
+
+main();
