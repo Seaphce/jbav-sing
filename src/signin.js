@@ -29,7 +29,7 @@ function saveCookies(response) {
   if (!setCookie) {
     return;
   }
-
+  console.log("开始保存cookie:");
   for (const cookie of setCookie) {
     const pair = cookie.split(";")[0];
     const index = pair.indexOf("=");
@@ -40,9 +40,9 @@ function saveCookies(response) {
     const value = pair.substring(index + 1);
 
     cookies[name] = value;
+    console.log(name + " -- " + value);
   }
-  
-  console.log("保存cookie:" + cookies);
+  console.log("保存cookie结束");
 }
 
 function getCookieHeader() {
