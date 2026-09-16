@@ -84,7 +84,7 @@ async function checkIn() {
 
   const response = await client.post(
     "/mod/sing_in.php",
-    {"action":"sign_in","lang":"zh","user_id":185920,"csrf_token":""},
+    {"action":"sign_in","lang":"zh","user_id":185920,"csrf_token":"cc5f13fdfa31b6889a79b8f2b3baac969b899684324a3d4f7fa047110df57f8f"},
     {
       headers: {
         Cookie: getCookieHeader(),
