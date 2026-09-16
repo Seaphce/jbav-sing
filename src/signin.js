@@ -62,7 +62,7 @@ async function login() {
     params,
     {
       headers: {
-        Cookie: getCookieHeader),
+        Cookie: getCookieHeader(),
         "content-type":"application/x-www-form-urlencoded; charset=UTF-8"
       }
     }
@@ -87,7 +87,7 @@ async function checkIn() {
     {"action":"sign_in","lang":"zh","user_id":185920,"csrf_token":""},
     {
       headers: {
-        Cookie: getCookieHeader),
+        Cookie: getCookieHeader(),
        "content-type":"application/json; charset=UTF-8"
 
       }
