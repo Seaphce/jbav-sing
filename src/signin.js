@@ -54,8 +54,8 @@ async function login() {
   console.log("正在登录...");
   
   const params = new URLSearchParams();
-  params.append('username', '张三');
-  params.append('pass', '123456');
+  params.append('username', USERNAME);
+  params.append('pass', PASSWORD);
   
   const response = await client.post(
     "/login",
