@@ -41,7 +41,8 @@ function saveCookies(response) {
 
     cookies[name] = value;
   }
-  console.log("保存cookie:${JSON.stringify(cookies)}");
+  
+  console.log("保存cookie:" + cookies);
 }
 
 function getCookieHeader() {
