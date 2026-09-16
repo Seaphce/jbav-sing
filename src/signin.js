@@ -16,8 +16,7 @@ const client = axios.create({
   maxRedirects: 5,
   validateStatus: () => true,
   headers: {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0"
   }
 });
 
@@ -58,12 +57,13 @@ async function login() {
   params.append('pass', PASSWORD);
   
   const response = await client.post(
-    "/login",
+    "/login/",
     params,
     {
       headers: {
         Cookie: getCookieHeader(),
-        "content-type":"application/x-www-form-urlencoded; charset=UTF-8"
+        "content-type":"application/x-www-form-urlencoded; charset=UTF-8",
+        "Accept": "*/*"
       }
     }
   );
@@ -88,8 +88,8 @@ async function checkIn() {
     {
       headers: {
         Cookie: getCookieHeader(),
-       "content-type":"application/json; charset=UTF-8"
-
+       "content-type":"application/json; charset=UTF-8",
+       "Accept": "application/json, text/javascript, */*; q=0.01"
       }
     }
   );
