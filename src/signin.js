@@ -19,7 +19,6 @@ const client = axios.create({
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
     "content-type":"application/x-www-form-urlencoded"
-    "cookie":"_safe=PqndvTcraOCvF7Aa; kt_lang=zh; deviceId=dev_svk445tgtj; kt_tcookie=1; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiIwZmVjZmY2NS02Yjc2LTQ0NjItODQ4NC0wZmVjMGNmYzE5ZmYiLCJpbmJveF9pZCI6MTA5MzIxLCJleHAiOjE3OTQ0MDM4NTEsImlhdCI6MTc3ODg1MTg1MX0.vpHZTgUopVaF_3bFv4vcEw2Ef1Bd1OUBhro18c1ZuHs; kt_vid=056391202fa84982a161f35402b19925; server_session_afa45114=6a50d204b5630e5e2f90a57904af65b6; selectedSourceKey=Line1; PHPSESSID=9tk1latt66i6lsjbhfse18otbq; kt_ips=120.234.36.82%2C183.239.165.202; kt_sid=e8a74ca61fa5e9d6.1789549756"
   }
 });
 
