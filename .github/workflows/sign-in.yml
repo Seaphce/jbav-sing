@@ -1,15 +1,10 @@
-name: Daily Sign In
+name: AVJB Checkin
 
 on:
-  schedule:
-    # UTC 时间
-    # 这里是每天北京时间 08:00
-    - cron: "0 0 * * *"
-
   workflow_dispatch:
 
 jobs:
-  signin:
+  checkin:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,17 +15,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
-          cache-dependency-path: 'frontend/package-lock.json'
 
       - name: Install dependencies
-        working-directory: frontend
-        run: npm ci
+        run: npm install
 
-      - name: Run sign in
-        working-directory: frontend
+      - name: Run checkin
+        run: npm start
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: npm start
