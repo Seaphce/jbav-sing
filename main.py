@@ -82,9 +82,9 @@ def sign(user,pwd):
         print('status:', task_page.status_code)
         print('encoding:', task_page.encoding)
         print('content length:', len(task_page.content))
-        print('content 前200字节:', task_page.content[:2000])
+        #print('content 前200字节:', task_page.content[:200])
         print('text 前200字符:')
-        print(task_page.text[:2000])
+        #print(task_page.text[:200])
         
         #html = task_page.text[:300]
         print(task_page.url)
