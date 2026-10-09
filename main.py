@@ -98,14 +98,36 @@ def sign(user,pwd):
 
         print('解压页面>>>')
        #print(html2)
+        
+        soup = BeautifulSoup(html2, 'html.parser')
 
+        # 获取所有 script 标签
+        scripts = soup.find_all('script')
         csrf_token = ''
-        match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', html2)
-        if match:
-            csrf_token = match.group(1)
-            print(csrf_token)
-        else:
-            print('没找到 CSRF_TOKEN')
+        for i, script in enumerate(scripts):
+            print(f"===== Script {i+1} =====")
+            # 如果有 src 属性，说明是外部脚本
+            if script.get('src'):
+                print(f"外部脚本: {script['src']}")
+            # 打印内联脚本内容
+            if script.string and i == 3:
+                print(script.string)
+                match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', script.string)
+                if match:
+                    csrf_token = match.group(1)
+                    print('CSRF_TOKEN = ')
+                    print(csrf_token)
+                else:
+                    print('没找到 CSRF_TOKEN')
+            print()
+
+        # csrf_token = ''
+        # match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', html2)
+        # if match:
+        #     csrf_token = match.group(1)
+        #     print(csrf_token)
+        # else:
+        #     print('没找到 CSRF_TOKEN')
             
         
         print(f'===账号进行签到...===')
