@@ -1,5 +1,6 @@
 import requests, json, re, os, sys
 import zstandard as zstd
+from bs4 import BeautifulSoup
 
 #from bs4 import BeautifulSoup
 sys.stdout.reconfigure(encoding='utf-8')
