@@ -111,7 +111,7 @@ def sign(user,pwd):
             if script.get('src'):
                 print(f"外部脚本: {script['src']}")
             # 打印内联脚本内容
-            if script.string and i == 3:
+            if script.string:
                 print(script.string)
                 match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', script.string)
                 if match:
