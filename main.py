@@ -98,7 +98,7 @@ def sign(user,pwd):
         html2 = html_bytes.decode('utf-8', errors='replace')
 
         print('解压页面>>>')
-        print(html2)
+        # print(html2)
         
         # soup = BeautifulSoup(html2, 'html.parser')
 
