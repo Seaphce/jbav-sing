@@ -37,7 +37,7 @@ jobs:
         env:
           URL: ${{ secrets.URL }}
           EMAIL: ${{ secrets.EMAIL }}
-          PASSWD: ${{ secrets.PASSWD }}
-          CONFIG: ${{ secrets.CONFIG }}
+          PW: ${{ secrets.PW }}
+          UN: ${{ secrets.UN }}
         run: |
           python3 ./main.py
