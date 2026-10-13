@@ -8,7 +8,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 # 网站的域名
 url = os.environ.get('URL')
 # 配置用户名（一般是邮箱(换行)密码）
-user_name = os.environ.get('UN')
+# user_name = os.environ.get('UN')
+user_name = 'iamfrom147'
 password = os.environ.get('PW')
 
 login_url = '{}/login/'.format(url)
