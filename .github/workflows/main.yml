@@ -2,7 +2,8 @@ name: "JBAV Checkin"
 
 on:
   schedule:
-    - cron: "0 5 * * *"  # scheduled at 06:00 (UTC+8) everyday
+    - cron: "9 9 * * *"  # scheduled at 06:00 (UTC+8) everyday
+      timezone: 'Asia/Shanghai'
   workflow_dispatch:
 
 env:
