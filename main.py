@@ -147,9 +147,9 @@ def sign(user,pwd):
 
 if __name__ == '__main__':
 	if not user_name:
-    	print("未设置 user_name")
+		print("未设置 user_name")
 	if not password:
-    	print("未设置 password")
+		print("未设置 password")
 	user = user_name
 	pwd = password
 	sign(user,pwd)
