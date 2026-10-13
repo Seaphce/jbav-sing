@@ -8,8 +8,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 # 网站的域名
 url = os.environ.get('URL')
 # 配置用户名（一般是邮箱(换行)密码）
-user_name = os.getenv('JUN')
-password = os.getenv('JPW')
+user_name = os.getenv('UN')
+password = os.getenv('PW')
 
 login_url = '{}/login/'.format(url)
 check_url = '{}/mod/sing_in.php'.format(url)
@@ -146,7 +146,7 @@ def sign(user,pwd):
     print('===账号签到结束===\n')
 
 if __name__ == '__main__':
-	print(os.environ)
+	# print(os.environ)
 	if not user_name:
 		print("未设置 user_name")
 	if not password:
