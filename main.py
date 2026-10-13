@@ -8,8 +8,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 # 网站的域名
 url = os.environ.get('URL')
 # 配置用户名（一般是邮箱(换行)密码）
-user_name = os.getenv('UN','iamfrom147')
-password = os.environ.get('PW')
+user_name = os.getenv('UN')
+password = os.getenv('PW')
 
 login_url = '{}/login/'.format(url)
 check_url = '{}/mod/sing_in.php'.format(url)
