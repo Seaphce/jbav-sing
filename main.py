@@ -8,8 +8,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 # 网站的域名
 url = os.environ.get('URL')
 # 配置用户名（一般是邮箱(换行)密码）
-# user_name = os.environ.get('UN')
-user_name = 'iamfrom147'
+user_name = os.getenv('UN','iamfrom147')
 password = os.environ.get('PW')
 
 login_url = '{}/login/'.format(url)
@@ -147,6 +146,10 @@ def sign(user,pwd):
     print('===账号签到结束===\n')
 
 if __name__ == '__main__':
+	if not user_name:
+    	print("未设置 user_name")
+	if not password:
+    	print("未设置 password")
 	user = user_name
 	pwd = password
 	sign(user,pwd)
