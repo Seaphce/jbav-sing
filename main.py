@@ -146,6 +146,7 @@ def sign(user,pwd):
     print('===账号签到结束===\n')
 
 if __name__ == '__main__':
+	print(os.environ)
 	if not user_name:
 		print("未设置 user_name")
 	if not password:
