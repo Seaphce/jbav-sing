@@ -87,15 +87,15 @@ def sign(user,pwd):
         print('text 前200字符:')
         print(task_page.text[:500])
         
-        #html = task_page.text[:300]
+        html = task_page.text
         print(task_page.url)
         print('任务中心页面>>>')
         #print(html)
         
         # 解压原始字节
-        dctx = zstd.ZstdDecompressor()
-        html_bytes = dctx.stream_reader(task_page.content).read()
-        html2 = html_bytes.decode('utf-8', errors='replace')
+        # dctx = zstd.ZstdDecompressor()
+        # html_bytes = dctx.stream_reader(task_page.content).read()
+        # html2 = html_bytes.decode('utf-8', errors='replace')
 
         print('解压页面>>>')
         # print(html2)
@@ -123,7 +123,7 @@ def sign(user,pwd):
         #     print()
 
         csrf_token = ''
-        match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', html2)
+        match = re.search(r'CSRF_TOKEN\s*=\s*"([^"]+)"', html)
         if match:
             csrf_token = match.group(1)
             print(csrf_token)
