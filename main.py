@@ -85,7 +85,7 @@ def sign(user,pwd):
         print('content length:', len(task_page.content))
         #print('content 前200字节:', task_page.content[:200])
         print('text 前200字符:')
-        #print(task_page.text[:200])
+        print(task_page.text[:2000])
         
         #html = task_page.text[:300]
         print(task_page.url)
